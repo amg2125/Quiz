@@ -4,26 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            color:indigo;
+        }
+        button {
+            background: ghostwhite;
+            border: none;
+            color: inherit;
+            padding: 8px 16px;
+            transition: all 0.5s;
+        }
+        button:hover {
+            background: lavender;
+            cursor: pointer;
+            padding: 8px 24px;
+        }
+        button.clicked.correct {
+            background: turquoise;
+        }
+        button.clicked:not(.correct) {
+            background: deeppink;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Web Quiz</h1>
+    <h1>Movie Quotes Quiz</h1>
 
-    <h2>How should you not refer to JavaScript?</h2>
-    <button onclick="check(this)">JS</button>
-    <button onclick="check(this)">VanillaJS</button>
-    <button onclick="check(this)" class="correct">Java</button>
+    <p>Pop quiz, hotshot. You think you know movies? Let's see if you can identify 
+        these famous quotes with the films they appeared in.</p>
 
+    <div class="question">
+    <h2>"To infinity and beyond."</h2>
+
+    <button onclick="check(this)">Apollo 13</button>
+    <button onclick="check(this)">The Lion King</button>
+    <button onclick="check(this)" class="correct">Toy Story</button>
+    </div>
+
+    <div class="question">
     <h2>What does the C in CSS stand for?</h2>
     <button onclick="check(this)" class="correct">Cascading</button>
     <button onclick="check(this)">Compounding</button>
     <button onclick="check(this)">Cat</button>
+    </div>
 
     <script>
         function check(button) {
-            if (button.classList.contains("correct")) {
-                button.style.background = "green"
-            } else {
-                button.style.background = "red"
+            button.classList.add("clicked");
+            
+            //if (button.classList.contains("correct")) {
+            //    //button.style.background = "turquoise"
+            //} else {
+                //button.style.background = "deeppink"
+                //button.style.color = "white"
+            //}
+
+            //Find current question
+            let question = button.closest('.question')
+
+            //Find all button elements within question
+            let buttons = question.querySelectorAll('button');
+
+            //Find each button on my list
+            for (let button of buttons) {
+                //Disable them
+                button.disabled = true;
             }
         }
     </script>
