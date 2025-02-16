@@ -36,86 +36,88 @@
     <p>Pop quiz, hotshot. You think you know movies? Let's see if you can identify 
         these famous quotes with the films they appeared in.</p>
 
+    <div id="scoreboard">Score: 0</div>
+
     <div class="question">
-    <h2>"To infinity and beyond."</h2>
+    <h2>1. "To infinity and beyond."</h2>
     <button onclick="check(this)">Apollo 13</button>
     <button onclick="check(this)">The Lion King</button>
     <button onclick="check(this)" class="correct">Toy Story</button>
     </div>
 
     <div class="question">
-    <h2>"Where we are going we don't need roads."</h2>
-    <button onclick="check(this)" class="correct">Back To The Future</button>
+    <h2>2. "Where we are going we don't need roads."</h2>
+    <button onclick="check(this)" class="correct">Back to the Future</button>
     <button onclick="check(this)">Speed</button>
     <button onclick="check(this)">Home Alone</button>
     </div>
 
     <div class="question">
-    <h2>"I am Iron Man."</h2>
+    <h2>3. "I am Iron Man."</h2>
     <button onclick="check(this)">The Dark Knight</button>
     <button onclick="check(this)" class="correct">Iron Man</button>
     <button onclick="check(this)">Spider-Man</button>
     </div>
 
     <div class="question">
-    <h2>"I'm the king of the world!"</h2>
+    <h2>4. "I'm the king of the world!"</h2>
     <button onclick="check(this)" class="correct">Titanic</button>
     <button onclick="check(this)">Avatar</button>
     <button onclick="check(this)">Inception</button>
     </div>
 
     <div class="question">
-    <h2>"Say hello to my little friend!"</h2>
+    <h2>5. "Say hello to my little friend!"</h2>
     <button onclick="check(this)">Heat</button>
     <button onclick="check(this)">The Godfather</button>
     <button onclick="check(this)" class="correct">Scarface</button>
     </div>
 
     <div class="question">
-    <h2>"There's no place like home."</h2>
-    <button onclick="check(this)">Cascading</button>
-    <button onclick="check(this)" class="correct">Compounding</button>
-    <button onclick="check(this)">Cat</button>
+    <h2>6. "There's no place like home."</h2>
+    <button onclick="check(this)">Gone With the Wind</button>
+    <button onclick="check(this)" class="correct">The Wizard of Oz</button>
+    <button onclick="check(this)">Singin' in the Rain</button>
     </div>
 
     <div class="question">
-    <h2>"This is Sparta!"</h2>
-    <button onclick="check(this)">Cascading</button>
-    <button onclick="check(this)">Compounding</button>
-    <button onclick="check(this)" class="correct">Cat</button>
+    <h2>7. "This is Sparta!"</h2>
+    <button onclick="check(this)" class="correct">300</button>
+    <button onclick="check(this)">Braveheart</button>
+    <button onclick="check(this)">Gladiator</button>
     </div>
 
     <div class="question">
-    <h2>"You're gonna need a bigger boat."</h2>
-    <button onclick="check(this)">Cascading</button>
-    <button onclick="check(this)">Compounding</button>
-    <button onclick="check(this)" class="correct">Cat</button>
+    <h2>8. "You're gonna need a bigger boat."</h2>
+    <button onclick="check(this)">Jurassic Park</button>
+    <button onclick="check(this)">Raiders of the Lost Ark</button>
+    <button onclick="check(this)" class="correct">Jaws</button>
     </div>
 
     <div class="question">
-    <h2>"With great power comes great responsibility."</h2>
-    <button onclick="check(this)">Cascading</button>
-    <button onclick="check(this)">Compounding</button>
-    <button onclick="check(this)" class="correct">Cat</button>
+    <h2>9. "With great power comes great responsibility."</h2>
+    <button onclick="check(this)">Black Panther</button>
+    <button onclick="check(this)" class="correct">Spider-Man</button>
+    <button onclick="check(this)">Batman Begins</button>
     </div>
     
     <div class="question">
-    <h2>"Houston, we have a problem."</h2>
-    <button onclick="check(this)">Cascading</button>
-    <button onclick="check(this)">Compounding</button>
-    <button onclick="check(this)" class="correct">Cat</button>
+    <h2>10. "Houston, we have a problem."</h2>
+    <button onclick="check(this)">The Right Stuff</button>
+    <button onclick="check(this)">Top Gun</button>
+    <button onclick="check(this)" class="correct">Apollo 13</button>
     </div>
 
     <script>
+        let score = 0;
+
         function check(button) {
             button.classList.add("clicked");
             
-            //if (button.classList.contains("correct")) {
-            //    //button.style.background = "turquoise"
-            //} else {
-                //button.style.background = "deeppink"
-                //button.style.color = "white"
-            //}
+            if (button.classList.contains("correct")) {
+                score++;
+                document.getElementById('scoreboard').innerText = 'Score: ' + score;
+            }
 
             //Find current question
             let question = button.closest('.question')
@@ -124,9 +126,9 @@
             let buttons = question.querySelectorAll('button');
 
             //Find each button on my list
-            for (let button of buttons) {
+            for (let btn of buttons) {
                 //Disable them
-                button.disabled = true;
+                btn.disabled = true;
             }
         }
     </script>
