@@ -28,6 +28,14 @@
             background: deeppink;
             color: white;
         }
+        #gif-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -108,6 +116,10 @@
     <button onclick="check(this)" class="correct">Apollo 13</button>
     </div>
 
+    <div id="gif-container">
+        <img src="gifs/Plankton Correct.gif" alt="Plankton Correct GIF">
+    </div>
+
     <script>
         let score = 0;
 
@@ -117,6 +129,7 @@
             if (button.classList.contains("correct")) {
                 score++;
                 document.getElementById('scoreboard').innerText = 'Score: ' + score;
+                showGif();
             }
 
             //Find current question
@@ -130,6 +143,14 @@
                 //Disable them
                 btn.disabled = true;
             }
+        }
+
+        function showGif() {
+            const gifContainer = document.getElementById('gif-container');
+            gifContainer.style.display = 'block';
+            setTimeout(() => {
+                gifContainer.style.display = 'none';
+            }, 3000);
         }
     </script>
 </body>
