@@ -135,12 +135,17 @@
     </div>
 
     <div id="gif-container">
-        <img src="Gifs/To_Infinity_and_Beyond.gif" alt="Toy Story Aliens GIF">
-        <img src="Gifs/BTTF Roads.gif" alt="Back to the Future GIF">
+        <img src="Gifs/To Infinity and Beyond.gif" alt="Toy Story GIF">
+        <img src="Gifs/Back to the Future.gif" alt="Back to the Future GIF">
     </div>
 
     <script>
         let score = 0;
+        const gifIndex = {
+            question1: 'To Infinity and Beyond GIF',
+            question2: 'Back to the Future GIF',
+            // Add more mappings as needed
+        };
 
         function check(button) {
             button.classList.add("clicked");
@@ -165,16 +170,18 @@
         }
 
         function showGif(button) {
-            const GifContainer = document.getElementById('gif-container');
-            const Gifs = GifContainer.querySelectorAll('img');
-            Gifs.forEach(Gif => Gif.style.display = 'none');
-            const correctGif = GifContainer.querySelector(`img[alt="${button.innerText} GIF"]`);
+            const gifContainer = document.getElementById('gif-container');
+            const gifs = gifContainer.querySelectorAll('img');
+            gifs.forEach(gif => gif.style.display = 'none');
+            const questionId = button.closest('.question').id;
+            const gifAltText = gifIndex[questionId];
+            const correctGif = gifContainer.querySelector(`img[alt="${gifAltText}"]`);
             if (correctGif) {
                 correctGif.style.display = 'block';
             }
-            GifContainer.style.display = 'block';
+            gifContainer.style.display = 'block';
             setTimeout(() => {
-                GifContainer.style.display = 'none';
+                gifContainer.style.display = 'none';
             }, 3000);
         }
     </script>
