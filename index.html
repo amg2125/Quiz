@@ -52,7 +52,10 @@
         #quiz-container {
             background: rgb(169, 199, 224);
             padding: 16px;
+            border-style: solid;
             border-radius: 8px;
+            border-color: white;
+            border-width: 8px;
         }
         #scoreboard {
             font-size: 1.5em;
@@ -192,6 +195,7 @@
                 gifContainer.style.display = 'block';
                 setTimeout(() => {
                     gifContainer.style.display = 'none';
+                    gifElement.src = '';
                 }, 3000);
             }
         }
