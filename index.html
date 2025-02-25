@@ -49,14 +49,20 @@
             transform: translate(-50%, -50%);
             z-index: 1000;
         }
+        #quiz-container {
+            background: rgb(169, 199, 224);
+            padding: 16px;
+            border-radius: 8px;
+        }
         #scoreboard {
             font-size: 1.5em;
             font-weight: bold;
-            color: lavender;
+            color: white;
         }
     </style>
 </head>
 <body>
+    <div id="quiz-container">
     <h1>Movie Quotes Quiz</h1>
 
     <p>Pop quiz, hotshot. You think you know movies? Let's see if you can identify 
@@ -133,23 +139,30 @@
     <button onclick="check(this)">Top Gun</button>
     <button onclick="check(this)" class="correct">Apollo 13</button>
     </div>
-
+    </div>
     <div id="gif-container">
-        <img src="Gifs/To Infinity and Beyond.gif" alt="Toy Story GIF">
-        <img src="Gifs/Back to the Future.gif" alt="Back to the Future GIF">
+        <img id="gif" src="" alt="GIF">
     </div>
 
     <script>
         let score = 0;
         const gifIndex = {
-            question1: 'To Infinity and Beyond GIF',
-            question2: 'Back to the Future GIF',
+            question1: 'Gifs/To_Infinity_and_Beyond.gif',
+            question2: 'Gifs/BTTF Roads.gif',
+            question3: 'Gifs/Iron Man.gif',
+            question4: 'Gifs/Titanic.gif',
+            question5: 'Gifs/Scarface.gif',
+            question6: 'Gifs/Wizard of Oz.gif',
+            question7: 'Gifs/300 Sparta.gif',
+            question8: 'Gifs/Jaws.gif',
+            question9: 'Gifs/Spiderman.gif',
+            question10: 'Gifs/Apollo 13.gif',
             // Add more mappings as needed
         };
 
         function check(button) {
             button.classList.add("clicked");
-            
+
             if (button.classList.contains("correct")) {
                 score++;
                 document.getElementById('scoreboard').innerText = 'Score: ' + score;
@@ -171,19 +184,17 @@
 
         function showGif(button) {
             const gifContainer = document.getElementById('gif-container');
-            const gifs = gifContainer.querySelectorAll('img');
-            gifs.forEach(gif => gif.style.display = 'none');
+            const gifElement = gifContainer.querySelector('#gif');
             const questionId = button.closest('.question').id;
-            const gifAltText = gifIndex[questionId];
-            const correctGif = gifContainer.querySelector(`img[alt="${gifAltText}"]`);
-            if (correctGif) {
-                correctGif.style.display = 'block';
+            const gifUrl = gifIndex[questionId];
+            if (gifUrl) {
+                gifElement.src = gifUrl;
+                gifContainer.style.display = 'block';
+                setTimeout(() => {
+                    gifContainer.style.display = 'none';
+                }, 3000);
             }
-            gifContainer.style.display = 'block';
-            setTimeout(() => {
-                gifContainer.style.display = 'none';
-            }, 3000);
         }
-    </script>
+</script>
 </body>
 </html>
